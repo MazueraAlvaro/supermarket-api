@@ -1,6 +1,6 @@
 const productsMock = [
   {
-    id: 1,
+    id: '5fde4ea232fa6738200a83de',
     name: 'Lighter - Bbq',
     description:
       'eu mi nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis',
@@ -180,6 +180,33 @@ const productsMock = [
   },
 ];
 
+class ProductServiceMock {
+  async getProducts() {
+    return Promise.resolve(productsMock);
+  }
+
+  async getProduct({ productId }) {
+    const product = Promise.resolve(productsMock.find(p => p.id == productId));
+    return product || {};
+  }
+
+  async createProduct() {
+    return Promise.resolve(productsMock[0].id);
+  }
+
+
+  async updateProduct({ productId } = {}) {
+    const updatedProductId = await Promise.resolve(productId);
+    return updatedProductId;
+  }
+
+  async deleteProduct({ productId }) {
+    const deletedProductId = await Promise.resolve(productId);
+    return deletedProductId;
+  }
+}
+
 module.exports = {
   productsMock,
+  ProductServiceMock,
 };
