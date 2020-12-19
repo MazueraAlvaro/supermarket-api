@@ -16,9 +16,9 @@ function productsApi(app) {
   const productsService = new ProducstService();
 
   router.get('/', async function (req, res, next) {
-    const { tags } = req.query;
+    const { search } = req.query;
     try {
-      const products = await productsService.getProducts({ tags });
+      const products = await productsService.getProducts({ search });
       res.status(200).json({
         data: products,
         message: 'Products listed',
