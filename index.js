@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 
 const { config } = require('./config/index');
@@ -11,6 +12,7 @@ const {
 } = require('./utils/middleware/errorHandlers');
 const notFoundHandler = require('./utils/middleware/notFoundHandler');
 
+app.use(cors());
 app.use(express.json());
 
 productsApi(app);
