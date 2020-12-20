@@ -67,7 +67,7 @@ function productsApi(app) {
 
   router.put(
     '/:productId',
-    validationHandler({ productId: productIdSchema }),
+    validationHandler({ productId: productIdSchema }, 'params'),
     validationHandler(updateProductSchema),
     async function (req, res, next) {
       const { body: product } = req;
